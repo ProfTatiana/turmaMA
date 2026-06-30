@@ -15,18 +15,15 @@ botoes.forEach(function (botao) {
   }
 });
 
-// Verifica se o usuário já tinha uma preferência salva anteriormente
-const temaSalvo = localStorage.getItem('dark-mode');
-if (temaSalvo === 'true') {
-    document.body.classList.add('dark-mode');
-}
+const btnTemaEscuro = document.querySelector(".btn-tema-escuro");
 
-// Adiciona o evento de clique ao botão
-botaoTema.addEventListener('click', () => {
-    // Alterna a classe .dark-mode no body
-    document.body.classList.toggle('dark-mode');
-    
-    // Salva a escolha atual no localStorage do navegador
-    const modoEscuroAtivo = document.body.classList.contains('dark-mode');
-    localStorage.setItem('dark-mode', modoEscuroAtivo);
-});
+btnTemaEscuro.addEventListener("click", mudaTema);
+
+function mudaTema() {
+  const corpoPagina = document.body;
+  if (corpoPagina.classList.contains("tema-escuro")) {
+    corpoPagina.classList.remove("tema-escuro");
+  } else {
+    corpoPagina.classList.add("tema-escuro");
+  }
+}
