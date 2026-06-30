@@ -1,8 +1,10 @@
-const botoes = document.querySelectorAll("button");
+// Seleciona APENAS os botões de reação dentro dos artigos (evita o botão de tema)
+const botoesReacao = document.querySelectorAll("article button");
 
-botoes.forEach(function (botao) {
+botoesReacao.forEach(function (botao) {
   let curtiu = false;
   botao.addEventListener("click", botaoClicado);
+  
   function botaoClicado() {
     let texto = botao.querySelector("span");
     if (curtiu === false) {
@@ -15,15 +17,12 @@ botoes.forEach(function (botao) {
   }
 });
 
+// Lógica do Tema Escuro
 const btnTemaEscuro = document.querySelector(".btn-tema-escuro");
 
 btnTemaEscuro.addEventListener("click", mudaTema);
 
 function mudaTema() {
-  const corpoPagina = document.body;
-  if (corpoPagina.classList.contains("tema-escuro")) {
-    corpoPagina.classList.remove("tema-escuro");
-  } else {
-    corpoPagina.classList.add("tema-escuro");
-  }
+  // O método toggle adiciona a classe se ela não existir, e remove se existir
+  document.body.classList.toggle("tema-escuro");
 }
